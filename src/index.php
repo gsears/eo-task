@@ -1,6 +1,6 @@
 <?php
 
-// Contains callAPI() and view() helpers
+// Contains callAPI(), isStringEmpty() and view() helpers
 require 'helpers.php';
 
 // Get function, which fetches the user's lists from EO for a dropdown select
@@ -34,6 +34,12 @@ function post()
     $lastName = $_POST['last_name'];
     $email = $_POST['email'];
     $listId = $_POST['list_id'];
+
+    if(isStringEmpty($firstName) || isStringEmpty($lastName)) {
+        return [
+            'flashMessage' => 'Please type a valid first and last name'
+        ];
+    }
 
     // Validate email, return early if failse
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {

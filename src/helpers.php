@@ -1,5 +1,9 @@
 <?php
 
+function isStringEmpty($string) {
+    return trim($string) === '';
+}
+
 // View render helper function
 function view($name, $params = [])
 {
