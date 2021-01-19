@@ -51,7 +51,7 @@ function post()
         ]
     ]);
 
-    if($response) {
+    if($response && $response['code'] === 200) {
         $responseData = json_decode($response['data'], true);
         $confirmedEmail = $responseData['email_address'];
         $flashMessage = "$confirmedEmail added!";
